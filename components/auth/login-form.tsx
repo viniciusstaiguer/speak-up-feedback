@@ -23,6 +23,11 @@ export function LoginForm() {
     setIsClient(true)
   }, [])
 
+  const handleNavigateToRegister = (e: React.MouseEvent) => {
+    e.preventDefault()
+    router.push("/register")
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -103,9 +108,15 @@ export function LoginForm() {
             />
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col space-y-2">
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? "Logging in..." : "Login"}
+          </Button>
+          <Button
+            onClick={handleNavigateToRegister}
+            className="border-none text-white bg-transparent hover:bg-transparent hover:text-blue-500"
+          >
+            Create your account
           </Button>
         </CardFooter>
       </form>
